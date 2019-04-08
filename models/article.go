@@ -1,17 +1,16 @@
 package models
 
+import "github.com/jinzhu/gorm/dialects/postgres"
+
 type Article struct {
-	ID      string   `json:"id"`
-	Writer  string   `json:"writer"`
-	Heading string   `json:"heading"`
-	Tags    []string `json:"tags,omitempty"`
-	URI     string   `json:"uri"`
+	ArticleID string         `json:"article_id" , gorm:"primary_key`
+	UserID    string         `json:"user_id" , gorm:"not null"`
+	Title     string         `json:"title" , gorm:"not null"`
+	Meta      postgres.Jsonb `json:"tags , omitempty"`
+	URI       string         `json:"uri"`
+	Comments  postgres.Jsonb `json:"comments,omitempty"`
 }
 
-func (m *Model) GetArticleList() []Article {
-	a1 := Article{}
-	a2 := Article{}
-	a1.ID = "rajni"
-	a2.ID = "sharad"
-	return []Article{a1, a2}
+func GetArticleList() []Article {
+	return nil
 }
