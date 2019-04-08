@@ -2,6 +2,7 @@ package controller
 
 import (
 	"log"
+	"os"
 
 	"github.com/labstack/echo"
 
@@ -26,5 +27,5 @@ func NewController(config *config.Config, model *models.Model) *Controller {
 func (c *Controller) Serve() {
 	c.AddRoutes()
 	log.Println("Starting the server...")
-	c.echo.Logger.Fatal(c.echo.Start(":13230"))
+	c.echo.Logger.Fatal(c.echo.Start(":" + os.Getenv("PORT")))
 }
