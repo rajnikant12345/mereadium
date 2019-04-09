@@ -7,3 +7,5 @@ import:
 - package: github.com/jinzhu/gorm
   version: ^1.9.2
 - package: github.com/jinzhu/inflection
+- package: github.com/google/uuid
+  version: ^1.1.1

@@ -24,7 +24,7 @@ func (a *App) SetConfig(c *config.Config) {
 }
 
 func (a *App) InitDatabase() {
-	db, err := gorm.Open("postgres", a.Conf.DATABAE_URL)
+	db, err := gorm.Open("postgres", a.Conf.DATABAE_URL+"?sslmode=disable")
 	if err != nil {
 		log.Panicln(err.Error())
 	}
@@ -36,12 +36,5 @@ func (a *App) InitDatabase() {
 	if db == nil {
 		panic("Database initialization failed")
 	}
-
-	ma := models.Article{}
-	ma.ArticleID = "asdf12345"
-	ma.UserID = "rajni"
-	ma.Title = "Useless article"
-	db.Save(&ma)
-
 	a.DB = db
 }
